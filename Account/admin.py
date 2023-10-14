@@ -20,7 +20,7 @@ class UserAdmin(BaseUserAdmin):
 		(None, {'fields':('user_name','email','phone_number', 'full_name', 'password1', 'password2')}),
 	)
     
-    search_fields=('user_name','email','phone_number','fullname')
+    search_fields=('user_name','email','phone_number','full_name')
     ordering=('user_name',)
     filter_horizontal=('groups','user_permissions')
     

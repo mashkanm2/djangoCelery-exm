@@ -13,6 +13,9 @@ class companyModels(models.Model):
     def __str__(self):
         return self.name_c
     
+    def get_absolute_url(self):
+    	return reverse('home:category_filter', args=[self.name_c,])
+    
 
 
 class postBlogModel(models.Model):
@@ -22,6 +25,7 @@ class postBlogModel(models.Model):
     best_acc=models.FloatField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    image=models.ImageField()
     
     
 
@@ -33,4 +37,4 @@ class postBlogModel(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("_detail", kwargs={"pk": self.pk})
+        return reverse("home:detail", args={self.slug})
