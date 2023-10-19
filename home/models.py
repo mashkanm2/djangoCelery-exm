@@ -3,18 +3,19 @@ from django.urls import reverse
 
 class companyModels(models.Model):
     name_c=models.CharField(max_length=30,unique=True)
+    slug=models.CharField(max_length=30,unique=True)
     price = models.IntegerField()
     
     class Meta:
         ordering = ('name_c',)
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = 'company'
+        verbose_name_plural = 'companyes'
 
     def __str__(self):
         return self.name_c
     
     def get_absolute_url(self):
-    	return reverse('home:category_filter', args=[self.name_c,])
+    	return reverse('home:company_filter', args=[self.slug,])
     
 
 
@@ -37,4 +38,4 @@ class postBlogModel(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("home:detail", args={self.slug})
+        return reverse("home:post_detail", args={self.slug})

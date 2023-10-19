@@ -3,6 +3,7 @@
 
 
 # Files
-
+*/__pycache__
 
 # Formats
+*.pyc

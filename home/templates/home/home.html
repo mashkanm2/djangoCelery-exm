@@ -7,10 +7,10 @@
 
 {% block content %}
 
-    {% for category in categories %}
+    {% for c in companyes %}
 
         <div class="btn-group">
-            <a href="{{ category.get_absolute_url }}" class="btn btn-danger">{{ category.name }}</a>
+            <a href="{{ c.get_absolute_url }}" class="btn btn-danger">{{ c.name_c }}</a>
             {% comment %} <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
                 <span class="visually-hidden">Toggle Dropdown</span>
             </button>
