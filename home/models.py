@@ -38,4 +38,6 @@ class postBlogModel(models.Model):
         return self.name
 
     def get_absolute_url(self):
+
         return reverse("home:post_detail", args={self.slug})
+

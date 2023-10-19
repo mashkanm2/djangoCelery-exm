@@ -26,4 +26,3 @@ class homeView(View):
             
         return render(request,self.template_name,{'products':posts, 'companyes':companys})
         
-        
