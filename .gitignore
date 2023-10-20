@@ -4,6 +4,8 @@
 
 # Files
 */__pycache__
+rendRequest.py
+
 
 # Formats
 *.pyc

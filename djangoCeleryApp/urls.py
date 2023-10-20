@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import data_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls',namespace='home')),
-    path('account/',include('Account.urls',namespace='account'))
+    path('account/',include('Account.urls',namespace='account')),
+    path('data', data_view, name='data_view'),
 ]
