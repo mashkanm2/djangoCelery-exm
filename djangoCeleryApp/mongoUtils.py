@@ -38,7 +38,7 @@ class MongoDBConnection:
 
 
     def get_data_from_mongodb(self,cellection_name:str):
-        collection = self.db['yourcollectionname']  
+        collection = self.db[cellection_name]  
 
         # Retrieve all documents from the collection
         documents = collection.find()
