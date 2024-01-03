@@ -1,0 +1,60 @@
+
+version: '3'
+
+services:
+  # PostgreSQL service
+  db:
+    image: "postgres:latest"
+    container_name: "my-postgresql-container"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qazWSX
+      - POSTGRES_DB=Test1
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"  # PostgreSQL default port
+    networks:
+      - my_network
+
+  # # Django service
+  # web:
+  #   build: .
+  #   command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - db
+
+  # # Celery worker service
+  # worker:
+  #   build: .
+  #   command: celery -A your_project_name worker --loglevel=info
+  #   volumes:
+  #     - .:/app
+  #   depends_on:
+  #     - db
+
+  # RabbitMQ service
+  rabbitmq:
+    image: "rabbitmq:latest"
+    container_name: "my-rabbitmq-container"
+    environment:
+      - RABBITMQ_DEFAULT_USER=m2
+      - RABBITMQ_DEFAULT_PASS=123456
+    ports:
+      - "5672:5672"  # RabbitMQ default port
+      - "15672:15672"  # RabbitMQ management plugin port
+    networks:
+      - my_network
+    # depends_on:
+    #   - web
+    #   - worker
+
+networks:
+  my_network:
+
+volumes:
+  postgres_data:

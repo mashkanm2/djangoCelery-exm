@@ -69,3 +69,24 @@ To plot a chart about requests per hour for a Django API in the admin panel, you
 After following these steps, you should be able to see a chart displaying requests per hour for your Django API in the admin panel when viewing individual `APIRequest` objects.
 
 Note: This is a simplified example, and you may need to modify it based on your specific requirements and the structure of your Django models.
+
+
+
+
+
+
+
+
+
+
+
+
+auto byer
+
+https://github.com/topics/fifa23
+
+https://github.com/xAranaktu/FIFA-23-CM-Cheat-Table
+https://github.com/topics/fifa-23-cheats-pc
+https://github.com/topics/autobuyer
+https://github.com/olledejong/Playstation-5-AutoBuyer
+https://github.com/tmb5cg/Fifa-Autobidder

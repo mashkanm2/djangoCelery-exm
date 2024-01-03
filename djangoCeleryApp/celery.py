@@ -2,8 +2,8 @@ from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
 import pika
-from .mongoUtils import MongoDBConnection
-
+# from .mongoUtils import MongoDBConnection
+from .postgresqlUtils import PostgresDBConnection
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoCelery-exm.settings')
 
@@ -28,4 +28,5 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost')
 channel = connection.channel()
 channel.queue_declare(queue='data_queue')
 
-mongo_db=MongoDBConnection()
+# mongo_db=MongoDBConnection()
+psql_db=PostgresDBConnection()

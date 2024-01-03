@@ -86,7 +86,13 @@ DATABASES = {
     }
 }
 
-
+DATABASEPSQL={'host':'localhost',
+              'port':5432,
+              'user':'postgres',
+              "password":'qazWSX',
+              "dbname":'Test1'}
+DATABASEMONGO={'host':'mongodb://localhost:27017/',
+               'dbname':'Test1'}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

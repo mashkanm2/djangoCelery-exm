@@ -6,3 +6,4 @@ pika
 django-celery
 
 pymongo
+psycopg2

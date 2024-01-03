@@ -5,7 +5,9 @@ aiModels
 # Files
 */__pycache__
 rendRequest.py
-
+testForcast.py
+test_mongo.py
+untitled_3.py
 
 # Formats
 *.pyc

@@ -1,6 +1,7 @@
 
 
 import pymongo
+from django.conf import settings
 
 
 class MongoDBConnection:
@@ -10,8 +11,8 @@ class MongoDBConnection:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
             # Initialize the MongoDB client and database connection here
-            cls._instance.client = pymongo.MongoClient('mongodb://localhost:27017/')
-            cls._instance.db = cls._instance.client['dbname1']  # Replace with your MongoDB database name
+            cls._instance.client = pymongo.MongoClient(settings.DATABASEMONGO['host'])
+            cls._instance.db = cls._instance.client[settings.DATABASEMONGO['dbname']]  
         return cls._instance
 
     def get_db(self):
@@ -24,7 +25,7 @@ class MongoDBConnection:
         return count
 
 
-    def save_data_to_mongodb(self,data,cellection_name:str):
+    def save_data_to_db(self,data,cellection_name:str):
         collection = self.db[cellection_name]  
 
         # Insert the data into the collection
@@ -37,7 +38,7 @@ class MongoDBConnection:
             return "Failed to save data"
 
 
-    def get_data_from_mongodb(self,cellection_name:str):
+    def get_data_from_db(self,cellection_name:str):
         collection = self.db[cellection_name]  
 
         # Retrieve all documents from the collection
@@ -49,7 +50,7 @@ class MongoDBConnection:
             print(document)
 
 
-    def update_data_in_mongodb(self,query, update_data,cellection_name:str):
+    def update_data_in_db(self,query, update_data,cellection_name:str):
         collection = self.db[cellection_name]  
 
         # Update the matching documents in the collection
@@ -61,7 +62,7 @@ class MongoDBConnection:
         else:
             return "Failed to update data"
 
-    def delete_data_from_mongodb(self,query,cellection_name:str):
+    def delete_data_from_db(self,query,cellection_name:str):
         collection = self.db[cellection_name]  
         # Delete the matching documents from the collection
         result = collection.delete_many(query)

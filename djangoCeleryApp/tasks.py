@@ -3,7 +3,8 @@
 from aiModels.processes import processPerData, processPer100Data, processPer1000Data
 from .celery import app
 # from .celery import channel
-from .celery import mongo_db
+# from .celery import mongo_db as testDB
+from .celery import psql_db as testDB
 
 # this function must be syncron
 def dataRecv(data):
@@ -15,10 +16,10 @@ def dataRecv(data):
     ## save data to MongoDB
     saveOnMongoDB.delay()
     #
-    if (mongo_db.getcount(data['company'])+1)%101==0:
+    if (testDB.getcount(data['company'])+1)%101==0:
         process002.delay(data['company'])
     
-    if (mongo_db.getcount(data['company'])+1)%1001==0:
+    if (testDB.getcount(data['company'])+1)%1001==0:
         process003.delay(data['company'])
     
     
