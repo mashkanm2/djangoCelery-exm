@@ -1,19 +1,19 @@
 from __future__ import absolute_import, unicode_literals
 import os
 from celery import Celery
-import pika
+from datetime import datetime, timedelta
 # from .mongoUtils import MongoDBConnection
 from .postgresqlUtils import PostgresDBConnection
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoCelery-exm.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoCeleryApp.settings')
 
-app = Celery('djangoCelery-exm')
+app = Celery('djangoCeleryApp')
+
+
 app.config_from_object('django.conf:settings', namespace='CELERY')
-app.autodiscover_tasks()
-
-
 
 # app.conf.broker_url = 'amqp://'
+# app.conf.broker_url = settings.CELERY_BROKER_URL
 # app.conf.result_backend = 'rpc://'
 # app.conf.task_serializer = 'json'
 # app.conf.result_serializer = 'pickle'
@@ -22,11 +22,7 @@ app.autodiscover_tasks()
 # app.conf.task_always_eager = False
 # app.conf.worker_prefetch_multiplier = 4
 
-
-# Initialize RabbitMQ connection
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
-channel = connection.channel()
-channel.queue_declare(queue='data_queue')
+app.autodiscover_tasks()
 
 # mongo_db=MongoDBConnection()
-psql_db=PostgresDBConnection()
+# psql_db=PostgresDBConnection()
