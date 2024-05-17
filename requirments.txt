@@ -4,6 +4,15 @@ django
 celery
 pika
 django-celery
-
+django-celery-results
+django_celery_beat
 pymongo
-psycopg2
+# psycopg2
+
+# background proccess and cache
+celery[redis]
+redis
+django-redis
+drf-yasg
+
+
