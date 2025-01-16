@@ -1,5 +1,6 @@
 # djangoCelery-exm
 
+* this repository is just for practice of how to use celery on django.
 
 #### run server
 python manage.py runserver 8005
